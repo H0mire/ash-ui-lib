@@ -1,0 +1,95 @@
+.card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Variants */
+.card.outlined {
+  border: 1px solid #e0e0e0;
+}
+
+.card.elevated {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card.elevated:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Padding variations */
+.card:not(.padding-none) .card-content {
+  padding: 1rem;
+}
+
+.card.padding-small .card-content {
+  padding: 0.5rem;
+}
+
+.card.padding-large .card-content {
+  padding: 2rem;
+}
+
+/* Header and Footer */
+.card-header {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+}
+
+.card-footer {
+  padding: 1rem;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+}
+
+/* Text alignment */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Loading Skeleton */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton-line {
+  height: 16px;
+  margin: 8px 0;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 37%,
+    #f0f0f0 63%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+.skeleton-header .skeleton-line {
+  height: 24px;
+}
+
+.skeleton-footer .skeleton-line {
+  height: 20px;
+}
+
+/* Loading State Background Colors */
+.skeleton-header {
+  background-color: #fafafa;
+}
+
+.skeleton-footer {
+  background-color: #fafafa;
+}

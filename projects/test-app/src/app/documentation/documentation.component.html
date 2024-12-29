@@ -1,0 +1,104 @@
+<div class="documentation">
+  <!-- Navigation -->
+  <nav class="nav-sidebar">
+    <h2>Components</h2>
+    <ul>
+      <li *ngFor="let component of components"
+          [class.active]="component.name.toLowerCase() === activeComponent"
+          (click)="setActiveComponent(component.name)">
+        {{ component.name }}
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Content -->
+  <main class="content">
+    <header>
+      <h1>{{ currentComponent.name }}</h1>
+      <p class="description">{{ currentComponent.description }}</p>
+    </header>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button [class.active]="activeTab === 'overview'"
+              (click)="setActiveTab('overview')">Overview</button>
+      <button [class.active]="activeTab === 'api'"
+              (click)="setActiveTab('api')">API</button>
+      <button [class.active]="activeTab === 'examples'"
+              (click)="setActiveTab('examples')">Examples</button>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content" [ngSwitch]="activeTab">
+      <!-- Overview Tab -->
+      <div *ngSwitchCase="'overview'" class="overview">
+        <ash-card>
+          <h3>Installation</h3>
+          <div class="code-block">
+            <pre><code>npm install &#64;ash/ui-components</code></pre>
+            <button class="copy-button" (click)="copyToClipboard('npm install @ash/ui-components')">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+
+          <h3>Usage</h3>
+          <div class="code-block">
+            <pre><code>{{ currentComponent.usage }}</code></pre>
+            <button class="copy-button" (click)="copyToClipboard(currentComponent.usage)">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+        </ash-card>
+      </div>
+
+      <!-- API Tab -->
+      <div *ngSwitchCase="'api'" class="api">
+        <ash-card>
+          <h3>Properties</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of currentComponent.props">
+                <td><code>{{ prop.name }}</code></td>
+                <td><code>{{ prop.type }}</code></td>
+                <td><code>{{ prop.default }}</code></td>
+                <td>{{ prop.description }}</td>
+                <td>{{ prop.required ? 'Yes' : 'No' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </ash-card>
+      </div>
+
+      <!-- Examples Tab -->
+      <div *ngSwitchCase="'examples'" class="examples">
+        <ash-card *ngFor="let example of currentComponent.examples" class="example-card">
+          <h3>{{ example.title }}</h3>
+          <p>{{ example.description }}</p>
+
+          <!-- Code Preview -->
+          <div class="code-block">
+            <pre><code>{{ example.code }}</code></pre>
+            <button class="copy-button" (click)="copyToClipboard(example.code)">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+
+          <!-- Live Preview -->
+          <div *ngIf="example.preview" class="preview-block">
+            <h4>Preview</h4>
+            <div class="preview-content" [innerHTML]="example.code"></div>
+          </div>
+        </ash-card>
+      </div>
+    </div>
+  </main>
+</div>

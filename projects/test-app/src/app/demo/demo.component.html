@@ -1,0 +1,302 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+
+  <section>
+    <h2>Input Variants</h2>
+    <div class="input-grid">
+      <!-- Outlined Input -->
+      <ash-input
+        [(ngModel)]="formValues.username"
+        variant="outlined"
+        label="Username"
+        placeholder="Enter username"
+        icon="fas fa-user"
+        [clearable]="true"
+      ></ash-input>
+
+      <!-- Filled Input -->
+      <ash-input
+        [(ngModel)]="formValues.email"
+        variant="filled"
+        type="email"
+        label="Email"
+        placeholder="Enter email"
+        icon="fas fa-envelope"
+        iconPosition="right"
+        [clearable]="true"
+      ></ash-input>
+
+      <!-- Standard Input -->
+      <ash-input
+        [(ngModel)]="formValues.password"
+        variant="standard"
+        type="password"
+        label="Password"
+        placeholder="Enter password"
+        icon="fas fa-lock"
+      ></ash-input>
+    </div>
+  </section>
+
+  <section>
+    <h2>Input States</h2>
+    <div class="input-grid">
+      <!-- Error State -->
+      <ash-input
+        variant="outlined"
+        label="Error Input"
+        placeholder="Error state"
+        error="This field has an error"
+        icon="fas fa-exclamation-circle"
+        iconPosition="right"
+      ></ash-input>
+
+      <!-- Disabled State -->
+      <ash-input
+        variant="outlined"
+        label="Disabled Input"
+        placeholder="Disabled state"
+        [disabled]="true"
+      ></ash-input>
+
+      <!-- With Hint -->
+      <ash-input
+        variant="outlined"
+        label="With Hint"
+        placeholder="Enter value"
+        hint="This is a helpful message"
+      ></ash-input>
+    </div>
+  </section>
+
+  <section>
+    <h2>Input Sizes & Affixes</h2>
+    <div class="input-grid">
+      <!-- Small Input -->
+      <ash-input
+        variant="outlined"
+        size="small"
+        label="Small Input"
+        placeholder="Small size"
+      ></ash-input>
+
+      <!-- With Prefix/Suffix -->
+      <ash-input
+        variant="outlined"
+        label="Price"
+        placeholder="0.00"
+        prefix="$"
+        suffix="USD"
+      ></ash-input>
+
+      <!-- Search Input -->
+      <ash-input
+        [(ngModel)]="formValues.search"
+        variant="outlined"
+        size="large"
+        label="Search"
+        placeholder="Search..."
+        icon="fas fa-search"
+        [clearable]="true"
+        (iconClick)="formValues.search = ''"
+      ></ash-input>
+    </div>
+  </section>
+
+  <section>
+    <h2>Full Width Input</h2>
+    <ash-input
+      variant="outlined"
+      label="Full Width Input"
+      placeholder="This input takes full width"
+      [fullWidth]="true"
+      icon="fas fa-edit"
+    ></ash-input>
+  </section>
+
+  <section>
+    <h2>Button Variants</h2>
+    <div class="button-group">
+      <ash-button>Primary Button</ash-button>
+      <ash-button variant="secondary">Secondary Button</ash-button>
+      <ash-button variant="outline">Outline Button</ash-button>
+      <ash-button variant="text">Text Button</ash-button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Button Sizes</h2>
+    <div class="button-group">
+      <ash-button size="small">Small Button</ash-button>
+      <ash-button size="medium">Medium Button</ash-button>
+      <ash-button size="large">Large Button</ash-button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Button States</h2>
+    <div class="button-group">
+      <ash-button [disabled]="true">Disabled Button</ash-button>
+      <ash-button [fullWidth]="true">Full Width Button</ash-button>
+      <ash-button icon="fas fa-star">Button with Icon</ash-button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Card Variants</h2>
+    <div class="card-grid">
+      <!-- Default Card -->
+      <ash-card [hasHeader]="true" [hasFooter]="true">
+        <div card-header>
+          <h3>Default Card</h3>
+        </div>
+        <p>This is a default card with header and footer.</p>
+        <div card-footer>
+          <ash-button size="small">Action</ash-button>
+        </div>
+      </ash-card>
+
+      <!-- Outlined Card -->
+      <ash-card variant="outlined" [hasHeader]="true">
+        <div card-header>
+          <h3>Outlined Card</h3>
+        </div>
+        <p>This card has an outlined style with only a header.</p>
+      </ash-card>
+
+      <!-- Elevated Card -->
+      <ash-card variant="elevated" padding="large" align="center">
+        <h3>Elevated Card</h3>
+        <p>This is a centered card with large padding and elevation.</p>
+        <ash-button variant="secondary">Learn More</ash-button>
+      </ash-card>
+    </div>
+  </section>
+
+  <section>
+    <h2>Loading Cards</h2>
+    <div class="card-grid">
+      <!-- Loading Card with Header and Footer -->
+      <ash-card 
+        [loading]="true"
+        [hasHeader]="true"
+        [hasFooter]="true"
+        [loadingLines]="3">
+      </ash-card>
+
+      <!-- Loading Card with Header Only -->
+      <ash-card 
+        [loading]="true"
+        variant="outlined"
+        [hasHeader]="true"
+        [loadingLines]="2">
+      </ash-card>
+
+      <!-- Loading Card without Header/Footer -->
+      <ash-card 
+        [loading]="true"
+        variant="elevated"
+        padding="large"
+        [loadingLines]="4">
+      </ash-card>
+    </div>
+  </section>
+
+  <section>
+    <h2>Input Validation</h2>
+    <div class="input-grid">
+      <!-- Email Validation -->
+      <ash-input
+        [(ngModel)]="formValues.email"
+        type="email"
+        label="Email"
+        placeholder="Enter email"
+        icon="fas fa-envelope"
+        [required]="true"
+        (validationChange)="onValidationChange('email', $event)"
+      ></ash-input>
+
+      <!-- Password Validation -->
+      <ash-input
+        [(ngModel)]="formValues.password"
+        type="password"
+        label="Password"
+        placeholder="Enter password"
+        icon="fas fa-lock"
+        [minLength]="8"
+        [pattern]="'^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$'"
+        hint="Minimum 8 characters, at least one letter and one number"
+        (validationChange)="onValidationChange('password', $event)"
+      ></ash-input>
+
+      <!-- Phone Number -->
+      <ash-input
+        [(ngModel)]="formValues.phone"
+        type="tel"
+        label="Phone"
+        placeholder="Enter phone number"
+        icon="fas fa-phone"
+        [pattern]="'^[+]?[(]?[0-9]{3}[)]?[-\\s.]?[0-9]{3}[-\\s.]?[0-9]{4,6}$'"
+        hint="Format: (123) 456-7890"
+        (validationChange)="onValidationChange('phone', $event)"
+      ></ash-input>
+    </div>
+  </section>
+
+  <section>
+    <h2>More Validation Examples</h2>
+    <div class="input-grid">
+      <!-- Number Range -->
+      <ash-input
+        [(ngModel)]="formValues.age"
+        type="number"
+        label="Age"
+        placeholder="Enter age"
+        icon="fas fa-user"
+        [min]="0"
+        [max]="120"
+        hint="Must be between 0 and 120"
+        (validationChange)="onValidationChange('age', $event)"
+      ></ash-input>
+
+      <!-- ZIP Code -->
+      <ash-input
+        [(ngModel)]="formValues.zipcode"
+        label="ZIP Code"
+        placeholder="Enter ZIP code"
+        icon="fas fa-map-marker-alt"
+        [pattern]="'^[0-9]{5}(?:-[0-9]{4})?$'"
+        hint="Format: 12345 or 12345-6789"
+        (validationChange)="onValidationChange('zipcode', $event)"
+      ></ash-input>
+
+      <!-- Custom Validation -->
+      <ash-input
+        [(ngModel)]="formValues.customField"
+        label="Custom Validation"
+        placeholder="Enter value (must start with ASH-)"
+        icon="fas fa-check-circle"
+        [customValidator]="validateCustomField"
+        (validationChange)="onValidationChange('customField', $event)"
+      ></ash-input>
+    </div>
+  </section>
+
+  <section>
+    <h2>Validation on Blur</h2>
+    <div class="input-grid">
+      <!-- Validate on Blur -->
+      <ash-input
+        [(ngModel)]="formValues.username"
+        label="Username"
+        placeholder="Enter username"
+        icon="fas fa-user"
+        [minLength]="3"
+        [maxLength]="20"
+        [validateOnBlur]="true"
+        hint="Will validate when you leave the field"
+        (validationChange)="onValidationChange('username', $event)"
+      ></ash-input>
+    </div>
+  </section>
+</div>

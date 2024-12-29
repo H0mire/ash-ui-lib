@@ -1,0 +1,43 @@
+<div class="card"
+  [class.outlined]="variant === 'outlined'"
+  [class.elevated]="variant === 'elevated'"
+  [class.padding-none]="padding === 'none'"
+  [class.padding-small]="padding === 'small'"
+  [class.padding-large]="padding === 'large'"
+  [class.text-center]="align === 'center'"
+  [class.text-right]="align === 'right'"
+  [style.width]="width"
+  [style.height]="height"
+>
+  <!-- Loading State -->
+  <ng-container *ngIf="loading">
+    <div class="card-header skeleton-header" *ngIf="hasHeader">
+      <div class="skeleton-line" style="width: 50%"></div>
+    </div>
+    
+    <div class="card-content">
+      <ng-container *ngFor="let i of [].constructor(loadingLines)">
+        <div class="skeleton-line" [style.width]="80 - i * 10 + '%'"></div>
+      </ng-container>
+    </div>
+    
+    <div class="card-footer skeleton-footer" *ngIf="hasFooter">
+      <div class="skeleton-line" style="width: 30%"></div>
+    </div>
+  </ng-container>
+
+  <!-- Normal State -->
+  <ng-container *ngIf="!loading">
+    <div class="card-header" *ngIf="hasHeader">
+      <ng-content select="[card-header]"></ng-content>
+    </div>
+    
+    <div class="card-content">
+      <ng-content></ng-content>
+    </div>
+    
+    <div class="card-footer" *ngIf="hasFooter">
+      <ng-content select="[card-footer]"></ng-content>
+    </div>
+  </ng-container>
+</div>

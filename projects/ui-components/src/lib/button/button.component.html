@@ -1,0 +1,12 @@
+<button
+  [type]="type"
+  [disabled]="disabled"
+  [class]="variant"
+  [class.full-width]="fullWidth"
+  [class.small]="size === 'small'"
+  [class.medium]="size === 'medium'"
+  [class.large]="size === 'large'"
+>
+  <i *ngIf="icon" [class]="icon"></i>
+  <ng-content></ng-content>
+</button>

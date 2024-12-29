@@ -1,0 +1,57 @@
+<div class="input-container"
+  [class.full-width]="fullWidth"
+  [class.focused]="focused"
+  [class.disabled]="disabled"
+  [class.error]="error"
+  [class.small]="size === 'small'"
+  [class.large]="size === 'large'"
+  [class.outlined]="variant === 'outlined'"
+  [class.filled]="variant === 'filled'"
+  [class.standard]="variant === 'standard'"
+  [class.has-prefix]="prefix"
+  [class.has-suffix]="suffix"
+  [class.has-icon]="icon"
+  [class.icon-left]="icon && iconPosition === 'left'"
+  [class.icon-right]="icon && iconPosition === 'right'"
+>
+  <label *ngIf="label" [class.floating]="focused || value">{{ label }}</label>
+  
+  <div class="input-wrapper">
+    <i *ngIf="prefix" class="prefix">{{ prefix }}</i>
+    <i *ngIf="icon && iconPosition === 'left'" 
+       class="icon left-icon" 
+       [class]="icon"
+       (click)="onIconClicked()">
+    </i>
+    
+    <input
+      [type]="type"
+      [value]="value"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [required]="required"
+      (input)="onInput($event)"
+      (focus)="onFocus($event)"
+      (blur)="onBlur($event)"
+    >
+    
+    <i *ngIf="icon && iconPosition === 'right'" 
+       class="icon right-icon" 
+       [class]="icon"
+       (click)="onIconClicked()">
+    </i>
+    <i *ngIf="suffix" class="suffix">{{ suffix }}</i>
+    <button *ngIf="clearable && value" 
+            class="clear-button" 
+            type="button"
+            (click)="onClear()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <div class="bottom-text">
+    <small *ngIf="error" class="error-text">{{ error }}</small>
+    <small *ngIf="!error && hint" class="hint-text">{{ hint }}</small>
+  </div>
+</div>

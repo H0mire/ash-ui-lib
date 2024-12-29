@@ -1,0 +1,184 @@
+.input-container {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 200px;
+  font-family: inherit;
+}
+
+.input-container.full-width {
+  width: 100%;
+}
+
+/* Input wrapper styles */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Base input styles */
+input {
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 8px 12px;
+  color: #333;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Label styles */
+label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Variants */
+/* Outlined variant */
+.outlined .input-wrapper {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.outlined.focused .input-wrapper {
+  border-color: #007bff;
+  box-shadow: 0 0 0 1px #007bff;
+}
+
+/* Filled variant */
+.filled .input-wrapper {
+  background-color: #f5f5f5;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 2px solid #ccc;
+}
+
+.filled.focused .input-wrapper {
+  background-color: #e8e8e8;
+  border-bottom-color: #007bff;
+}
+
+/* Standard variant */
+.standard .input-wrapper {
+  border-bottom: 1px solid #ccc;
+}
+
+.standard.focused .input-wrapper {
+  border-bottom: 2px solid #007bff;
+}
+
+/* Sizes */
+.small input {
+  font-size: 14px;
+  padding: 6px 10px;
+}
+
+.large input {
+  font-size: 18px;
+  padding: 10px 14px;
+}
+
+/* States */
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.disabled input {
+  cursor: not-allowed;
+}
+
+.error .input-wrapper {
+  border-color: #dc3545;
+}
+
+.error.focused .input-wrapper {
+  box-shadow: 0 0 0 1px #dc3545;
+}
+
+/* Icons and affixes */
+.icon, .prefix, .suffix {
+  color: #666;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prefix {
+  padding-left: 12px;
+}
+
+.suffix {
+  padding-right: 12px;
+}
+
+.left-icon {
+  padding-left: 12px;
+  cursor: pointer;
+}
+
+.right-icon {
+  padding-right: 12px;
+  cursor: pointer;
+}
+
+.icon-left input {
+  padding-left: 36px;
+}
+
+.icon-right input {
+  padding-right: 36px;
+}
+
+/* Clear button */
+.clear-button {
+  background: none;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-button:hover {
+  color: #333;
+}
+
+/* Bottom text */
+.bottom-text {
+  min-height: 20px;
+  margin-top: 4px;
+}
+
+.error-text {
+  color: #dc3545;
+  font-size: 12px;
+}
+
+.hint-text {
+  color: #666;
+  font-size: 12px;
+}
+
+/* Focus styles */
+.focused label {
+  color: #007bff;
+}
+
+.error.focused label {
+  color: #dc3545;
+}
+
+/* Floating label animation */
+label.floating {
+  transform: translateY(-20px);
+  font-size: 12px;
+  color: #007bff;
+}
